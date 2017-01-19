@@ -55,7 +55,7 @@ public class Robot extends SampleRobot {
         //NOTE--- The actual address of the Talo address needs to be reference on the RoboRIO NI Dashboard. 
         //IT may not be channel 0!!!!!!!!!!!!!!!!!!
         
-        shooter1 = new TalonSRX(0);
+        shooter1 = new TalonSRX(10);
     }
         
 
@@ -75,6 +75,7 @@ public class Robot extends SampleRobot {
             	
             	//This is setting the motor controller forward at Half Speed. 
             	shooter1.set(0.5);
+            	System.out.println("Shooter Forwards");
             }
             /*
              * Setting button 2 on the Joystick to go in opposite direction.
@@ -82,6 +83,7 @@ public class Robot extends SampleRobot {
              */
             else if(stick.getRawButton(2)){
             	//This is setting the motor controller to go the opposite direction at half speed. 
+            	System.out.println("Shooter Backwards");
             	shooter1.set(-0.5);
             }
             else {
