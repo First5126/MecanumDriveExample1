@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5126.robot;
 
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
@@ -33,10 +34,11 @@ public class Robot extends SampleRobot {
     
     /*
      * For the Test run of the Shooter on Talon SRX
+     * Since the TalonSRX is connected through CAN not PWM, we must use the Class CANTalon, 
      * 
      */
     
-    private TalonSRX shooter1;
+    private CANTalon shooter1;
     
     
     
@@ -55,7 +57,7 @@ public class Robot extends SampleRobot {
         //NOTE--- The actual address of the Talo address needs to be reference on the RoboRIO NI Dashboard. 
         //IT may not be channel 0!!!!!!!!!!!!!!!!!!
         
-        shooter1 = new TalonSRX(10);
+        shooter1 = new CANTalon(10);
     }
         
 
@@ -74,7 +76,8 @@ public class Robot extends SampleRobot {
             if(stick.getRawButton(1)){
             	
             	//This is setting the motor controller forward at Half Speed. 
-            	shooter1.set(0.5);
+            	shooter1.set(1.0);
+            	
             	System.out.println("Shooter Forwards");
             }
             /*
@@ -84,11 +87,12 @@ public class Robot extends SampleRobot {
             else if(stick.getRawButton(2)){
             	//This is setting the motor controller to go the opposite direction at half speed. 
             	System.out.println("Shooter Backwards");
-            	shooter1.set(-0.5);
+            	shooter1.set(-1.0);
             }
             else {
             	//This will turn the motor controller off (when the button(s) is released).
             	shooter1.set(0.0);
+            	
             }
             
             
