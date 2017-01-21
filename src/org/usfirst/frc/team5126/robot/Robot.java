@@ -1,7 +1,8 @@
 package org.usfirst.frc.team5126.robot;
 
 
-import edu.wpi.first.wpilibj.CANTalon;
+import com.ctre.*;
+
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -72,8 +73,8 @@ public class Robot extends SampleRobot {
         
         // Start the Camera Server 
         cam0 = CameraServer.getInstance();
-        cam0.setQuality(50);
-        cam0.startAutomaticCapture("cam0");
+        cam0.startAutomaticCapture(0);
+        
     }
         
 
