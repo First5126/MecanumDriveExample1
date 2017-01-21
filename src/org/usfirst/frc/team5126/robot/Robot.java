@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.SampleRobot;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.Victor;
 
 /**
  * This is a demo program showing how to use Mecanum control with the RobotDrive class.
@@ -18,6 +19,7 @@ public class Robot extends SampleRobot {
 	
     RobotDrive robotDrive;
     Joystick stick;
+    Victor leftmotor;
     
 
     
@@ -66,6 +68,9 @@ public class Robot extends SampleRobot {
         stick = new Joystick(joystickChannel);
         
         
+        System.out.println("The Robot has begun...... More to continue on");
+        
+        
         //NOTE--- The actual address of the Talo address needs to be reference on the RoboRIO NI Dashboard. 
         //IT may not be channel 0!!!!!!!!!!!!!!!!!!
         
@@ -99,7 +104,7 @@ public class Robot extends SampleRobot {
             if(stick.getRawButton(1)){
             	
             	//This is setting the motor controller forward at Half Speed. 
-            	shooter1.set(1.0);
+            	this.shootBall();
             	
             	System.out.println("Shooter Forwards");
             }
@@ -110,11 +115,12 @@ public class Robot extends SampleRobot {
             else if(stick.getRawButton(2)){
             	//This is setting the motor controller to go the opposite direction at half speed. 
             	System.out.println("Shooter Backwards");
-            	shooter1.set(-1.0);
+            	this.retrieveBall();
             }
             else {
             	//This will turn the motor controller off (when the button(s) is released).
             	shooter1.set(0.0);
+            	this.stopShooter();
             	
             }
             
@@ -126,4 +132,17 @@ public class Robot extends SampleRobot {
         }
     }
     
+    public void retrieveBall(){
+    	shooter1.set(1.0);
+    	
+    }
+    
+    public void shootBall(){
+    	shooter1.set(-1.0);
+    }
+    
+    public void stopShooter(){
+    	//For safety...
+    	shooter1.set(0.0);
+    }
 }
