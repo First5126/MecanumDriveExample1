@@ -70,7 +70,13 @@ public class Robot extends SampleRobot {
         	
         	// Use the joystick X axis for lateral movement, Y axis for forward movement, and Z axis for rotation.
         	// This sample does not use field-oriented drive, so the gyro input is set to zero.
-            robotDrive.mecanumDrive_Cartesian(stick.getX(), stick.getY(), stick.getZ(), 0);
+        	
+        	/*
+        	 * Multiply the X and Z axis by -1.00 to invert the controls of the joystick input.. 
+        	 * 
+        	 * This is to make the control system behave as one would normally expect.
+        	 */
+            robotDrive.mecanumDrive_Cartesian(stick.getX() * -1.00, stick.getY(), stick.getZ() * -1.00, 0);
             
             //This is a push and hold button one to use the shooter. When the button is released it should turn off. 
             if(stick.getRawButton(1)){
