@@ -2,6 +2,7 @@ package org.usfirst.frc.team5126.robot;
 
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
@@ -38,8 +39,18 @@ public class Robot extends SampleRobot {
      * 
      */
     
+    
+    /* 
+     * Adding support for Camera Server to use USB camera on RoboRio
+     * 
+     */
+    
+    public static CameraServer cam0;
+    
     private CANTalon shooter1;
     
+    
+   
     
     
     // The channel on the driver station that the joystick is connected to
@@ -58,6 +69,11 @@ public class Robot extends SampleRobot {
         //IT may not be channel 0!!!!!!!!!!!!!!!!!!
         
         shooter1 = new CANTalon(10);
+        
+        // Start the Camera Server 
+        cam0 = CameraServer.getInstance();
+        cam0.setQuality(50);
+        cam0.startAutomaticCapture("cam0");
     }
         
 
