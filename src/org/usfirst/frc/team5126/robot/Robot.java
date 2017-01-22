@@ -5,6 +5,7 @@ import com.ctre.*;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.SampleRobot;
@@ -52,6 +53,9 @@ public class Robot extends SampleRobot {
     
     private CANTalon shooter1;
     
+    //Instate support for reading channels off of the Power Distribution Channel
+    
+    private static PowerDistributionPanel pdp = new PowerDistributionPanel();
     
    
     
@@ -79,6 +83,7 @@ public class Robot extends SampleRobot {
         // Start the Camera Server 
         cam0 = CameraServer.getInstance();
         cam0.startAutomaticCapture(0);
+        
         
     }
         
@@ -125,6 +130,13 @@ public class Robot extends SampleRobot {
             }
             
             
+            //adding a button to output begin logging current usage 
+            
+            if(stick.getRawButton(10)){
+            	this.printOutCurrentReadings();
+            }
+            
+            
            
             
             
@@ -144,5 +156,9 @@ public class Robot extends SampleRobot {
     public void stopShooter(){
     	//For safety...
     	shooter1.set(0.0);
+    }
+    public void printOutCurrentReadings(){
+    	
+    	System.out.println("Current Channel 1  : " + pdp.getCurrent(0));
     }
 }
