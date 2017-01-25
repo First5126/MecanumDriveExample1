@@ -161,5 +161,11 @@ public class Robot extends SampleRobot {
     	
     	System.out.println("Current Channel 0  : " + pdp.getCurrent(0));
     	System.out.println("Current Channel 1: " +  pdp.getCurrent(1));
+    	System.out.println("Current Channel 0  : " + pdp.getCurrent(2));
+    	System.out.println("Current Channel 1: " +  pdp.getCurrent(3));
+    	System.out.println("Current Channel 0  : " + pdp.getCurrent(4));
+    	System.out.println("Current Channel 1: " +  pdp.getCurrent(5));
+    	System.out.println("Current Channel 0  : " + pdp.getCurrent(6));
+    	System.out.println("Current Channel 1: " +  pdp.getCurrent(7));
     }
 }
