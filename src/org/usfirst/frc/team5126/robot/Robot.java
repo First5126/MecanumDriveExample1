@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5126.robot;
 
 
-import com.ctre.*;
+//import com.ctre.*;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
@@ -51,7 +51,7 @@ public class Robot extends SampleRobot {
     
     public static CameraServer cam0;
     
-    private CANTalon shooter1;
+    //private CANTalon shooter1;
     
     //Instate support for reading channels off of the Power Distribution Channel
     
@@ -78,7 +78,7 @@ public class Robot extends SampleRobot {
         //NOTE--- The actual address of the Talo address needs to be reference on the RoboRIO NI Dashboard. 
         //IT may not be channel 0!!!!!!!!!!!!!!!!!!
         
-        shooter1 = new CANTalon(10);
+        //shooter1 = new CANTalon(10);
         
         // Start the Camera Server 
         cam0 = CameraServer.getInstance();
@@ -124,7 +124,7 @@ public class Robot extends SampleRobot {
             }
             else {
             	//This will turn the motor controller off (when the button(s) is released).
-            	shooter1.set(0.0);
+            	//shooter1.set(0.0);
             	this.stopShooter();
             	
             }
@@ -145,20 +145,21 @@ public class Robot extends SampleRobot {
     }
     
     public void retrieveBall(){
-    	shooter1.set(1.0);
+    	//shooter1.set(1.0);
     	
     }
     
     public void shootBall(){
-    	shooter1.set(-1.0);
+    	//shooter1.set(-1.0);
     }
     
     public void stopShooter(){
     	//For safety...
-    	shooter1.set(0.0);
+    	//shooter1.set(0.0);
     }
     public void printOutCurrentReadings(){
     	
-    	System.out.println("Current Channel 1  : " + pdp.getCurrent(0));
+    	System.out.println("Current Channel 0  : " + pdp.getCurrent(0));
+    	System.out.println("Current Channel 1: " +  pdp.getCurrent(1));
     }
 }
